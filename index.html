@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ESPODIV - Esport, diversió i moments per recordar. Organización de actividades deportivas en Barcelona.">
+<title>ESPODIV | Esport, diversió i moments per recordar</title>
+<style>
+:root{
+  --bg:#07111f; --card:#0e1d31; --card2:#12243b; --text:#f5f8fc;
+  --muted:#a9b8ca; --accent:#35e08b; --accent2:#20b9ff; --line:rgba(255,255,255,.1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+nav{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(7,17,31,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.45rem;font-weight:900;letter-spacing:.08em}
+.logo span{color:var(--accent)}
+.links{display:flex;gap:25px;align-items:center;font-size:.95rem}
+.links a{color:#dce7f3}.links a:hover{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 19px;border-radius:12px;font-weight:800;border:1px solid transparent;cursor:pointer}
+.btn-primary{background:var(--accent);color:#06131a}
+.btn-primary:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn-outline{border-color:rgba(255,255,255,.2);color:white}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.hero{min-height:100vh;display:grid;place-items:center;padding:125px 0 75px;position:relative;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(2px);opacity:.18;pointer-events:none}
+.hero:before{width:500px;height:500px;background:var(--accent);right:-180px;top:120px}
+.hero:after{width:420px;height:420px;background:var(--accent2);left:-180px;bottom:-150px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:55px;align-items:center;position:relative;z-index:1}
+.badge{display:inline-block;padding:7px 12px;border:1px solid rgba(53,224,139,.35);background:rgba(53,224,139,.08);color:var(--accent);border-radius:999px;font-size:.82rem;font-weight:800;margin-bottom:18px}
+h1{font-size:clamp(3rem,7vw,5.7rem);line-height:.95;letter-spacing:-.055em;margin-bottom:24px}
+h1 span{color:var(--accent)}
+.hero p{font-size:1.15rem;color:var(--muted);max-width:650px;margin-bottom:30px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.visual{background:linear-gradient(145deg,#122a44,#0a1728);border:1px solid var(--line);border-radius:30px;padding:24px;box-shadow:0 25px 80px rgba(0,0,0,.3)}
+.sport-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.sport{min-height:130px;border-radius:20px;background:rgba(255,255,255,.055);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end;padding:18px;transition:.25s}
+.sport:hover{transform:translateY(-4px);border-color:rgba(53,224,139,.5)}
+.emoji{font-size:2.5rem;margin-bottom:auto}.sport b{font-size:1.05rem}.sport small{color:var(--muted)}
+section{padding:95px 0}
+.section-head{max-width:700px;margin-bottom:45px}
+.kicker{color:var(--accent);font-weight:900;text-transform:uppercase;letter-spacing:.12em;font-size:.8rem}
+h2{font-size:clamp(2.1rem,5vw,3.5rem);line-height:1.05;margin:10px 0 15px;letter-spacing:-.04em}
+.section-head p{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:25px}
+.card .icon{font-size:2rem;margin-bottom:15px}.card h3{margin-bottom:8px}.card p{color:var(--muted)}
+.dark-alt{background:#091827;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:35px}
+.stat{padding:24px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+.stat strong{font-size:2rem;color:var(--accent);display:block}.stat span{color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.step{position:relative}.num{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#06131a;font-weight:900;margin-bottom:15px}
+.step p{color:var(--muted);font-size:.95rem}
+.cta{background:linear-gradient(135deg,#0d2a3b,#10283a);border:1px solid rgba(53,224,139,.2);border-radius:28px;padding:55px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.cta p{color:var(--muted);max-width:650px}
+form{display:grid;gap:14px;max-width:720px}
+input,textarea,select{width:100%;padding:14px 15px;border-radius:11px;border:1px solid var(--line);background:#081523;color:white;font:inherit}
+textarea{min-height:130px;resize:vertical}
+footer{padding:35px 0;border-top:1px solid var(--line);color:var(--muted)}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+.mobile{display:none}
+@media(max-width:820px){
+ .links{display:none}.mobile{display:block}.hero-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr}.cta{flex-direction:column;align-items:flex-start;padding:35px}
+}
+@media(max-width:520px){
+ h1{font-size:3.2rem}.sport-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.footer-inner{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="container nav-inner">
+    <a class="logo" href="#inicio">ESPO<span>DIV</span></a>
+    <div class="links">
+      <a href="#servicios">Servicios</a><a href="#como">Cómo funciona</a><a href="#objetivos">Objetivos</a><a href="#contacto" class="btn btn-primary">Contactar</a>
+    </div>
+    <a class="mobile btn btn-primary" href="#contacto">Contactar</a>
+  </div>
+</nav>
+
+<main>
+<section class="hero" id="inicio">
+ <div class="container hero-grid">
+  <div>
+   <div class="badge">BARCELONA · ACTIVIDADES DEPORTIVAS</div>
+   <h1>Esport,<br><span>diversió</span> y momentos para recordar.</h1>
+   <p>Organizamos actividades deportivas para que tú solo tengas que venir, participar y disfrutar. Torneos, jornadas, actividades al aire libre y mucho más.</p>
+   <div class="actions"><a class="btn btn-primary" href="#servicios">Descubre nuestros servicios →</a><a class="btn btn-outline" href="#contacto">Quiero organizar una actividad</a></div>
+  </div>
+  <div class="visual">
+   <div class="sport-grid">
+    <div class="sport"><div class="emoji">⚽</div><b>Fútbol</b><small>Torneos y partidos</small></div>
+    <div class="sport"><div class="emoji">🏀</div><b>Básquet</b><small>Competiciones</small></div>
+    <div class="sport"><div class="emoji">🏓</div><b>Pádel</b><small>Retos y torneos</small></div>
+    <div class="sport"><div class="emoji">🏐</div><b>Voleibol</b><small>Jornadas deportivas</small></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="servicios">
+ <div class="container">
+  <div class="section-head"><div class="kicker">Qué hacemos</div><h2>Todo organizado para que tú disfrutes.</h2><p>ESPODIV se encarga de buscar espacios, preparar horarios, gestionar inscripciones, preparar el material y coordinar cada actividad.</p></div>
+  <div class="cards">
+   <article class="card"><div class="icon">🏆</div><h3>Torneos deportivos</h3><p>Fútbol, básquet, pádel, voleibol y otros deportes. Puedes participar individualmente o en equipo.</p></article>
+   <article class="card"><div class="icon">👥</div><h3>Actividades para grupos</h3><p>Planes deportivos para grupos de amigos que quieren hacer deporte, divertirse y conocer gente.</p></article>
+   <article class="card"><div class="icon">🏢</div><h3>Empresas</h3><p>Actividades para trabajadores pensadas para fomentar el trabajo en equipo y la relación entre compañeros.</p></article>
+   <article class="card"><div class="icon">🌳</div><h3>Al aire libre</h3><p>Excursiones, caminatas, carreras y actividades deportivas en parques y otros espacios.</p></article>
+   <article class="card"><div class="icon">🏫</div><h3>Escuelas e institutos</h3><p>Jornadas, competiciones y actividades especiales adaptadas a las edades de los participantes.</p></article>
+   <article class="card"><div class="icon">📱</div><h3>Comunidad deportiva</h3><p>Información de próximas actividades, novedades, fotos y vídeos a través de las redes sociales.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="dark-alt" id="como">
+ <div class="container">
+  <div class="section-head"><div class="kicker">Así funciona</div><h2>Tú eliges la actividad. Nosotros hacemos el resto.</h2></div>
+  <div class="steps">
+   <div class="step"><div class="num">1</div><h3>Cuéntanos tu idea</h3><p>Dinos qué deporte o actividad quieres organizar y para quién.</p></div>
+   <div class="step"><div class="num">2</div><h3>Buscamos el espacio</h3><p>Nos encargamos de encontrar y reservar una instalación adecuada.</p></div>
+   <div class="step"><div class="num">3</div><h3>Lo preparamos</h3><p>Organizamos horarios, inscripciones, equipos y material necesario.</p></div>
+   <div class="step"><div class="num">4</div><h3>¡A disfrutar!</h3><p>Ven, participa y disfruta de una actividad preparada para ti.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="objetivos">
+ <div class="container">
+  <div class="section-head"><div class="kicker">Nuestra idea</div><h2>Deporte fácil, saludable y divertido.</h2><p>El proyecto nace en Barcelona con el objetivo de facilitar que diferentes personas puedan practicar deporte sin tener que preocuparse por toda la organización.</p></div>
+  <div class="stats">
+   <div class="stat"><strong>Barcelona</strong><span>El punto de partida del proyecto.</span></div>
+   <div class="stat"><strong>Para todos</strong><span>Actividades adaptadas a distintos perfiles y niveles.</span></div>
+   <div class="stat"><strong>Más adelante</strong><span>Ampliación a otros municipios y nuevos deportes.</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="dark-alt" id="contacto">
+ <div class="container">
+  <div class="cta">
+   <div><div class="kicker">¿Tienes una idea?</div><h2>Organizamos tu próxima actividad.</h2><p>Cuéntanos qué quieres hacer y prepararemos una propuesta. Este formulario es una demostración de la web y se puede conectar después a un correo o formulario real.</p></div>
+   <a class="btn btn-primary" href="#formulario">Contactar ahora →</a>
+  </div>
+  <div style="height:45px"></div>
+  <form id="formulario" onsubmit="enviar(event)">
+   <input id="nombre" required placeholder="Tu nombre">
+   <input id="email" type="email" required placeholder="Tu correo electrónico">
+   <select id="actividad" required>
+    <option value="">¿Qué quieres organizar?</option><option>Fútbol</option><option>Básquet</option><option>Pádel</option><option>Voleibol</option><option>Actividad al aire libre</option><option>Actividad para empresa</option><option>Actividad para escuela</option><option>Otra</option>
+   </select>
+   <textarea id="mensaje" placeholder="Cuéntanos un poco más..."></textarea>
+   <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+   <p id="respuesta" style="color:var(--accent);display:none;font-weight:700"></p>
+  </form>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container footer-inner">
+  <div><strong>ESPODIV</strong><br><span>Esport, diversió i moments per recordar.</span></div>
+  <div>Barcelona · Actividades deportivas</div>
+ </div>
+</footer>
+
+<script>
+function enviar(e){
+ e.preventDefault();
+ const nombre=document.getElementById('nombre').value.trim();
+ const actividad=document.getElementById('actividad').value;
+ const respuesta=document.getElementById('respuesta');
+ respuesta.style.display='block';
+ respuesta.textContent=`¡Gracias, ${nombre}! Hemos recibido tu solicitud para organizar una actividad de ${actividad}.`;
+}
+</script>
+</body>
+</html>
